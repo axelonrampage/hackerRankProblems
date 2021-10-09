@@ -1,0 +1,38 @@
+#This is a question on HackerRank Python Certification
+#I don't remember the question id but I can write the problem
+#Question--> Given a string with lowercase characters find the subarrays of the given array that start with any vowel, user will give the size of the subarray to be formed
+#find the subarray has the highest number of vowel present in it
+
+#SOLUTION   : You can define a function yourself and wrap all the below content in it
+
+s=input()
+ex=0
+vow = ['a', 'e', 'i', 'o', 'u']
+for z in vow:
+    if s.find(z)>=0:
+        ex=ex+1
+        break
+if ex==0:
+    exit("Not Found!")
+    
+#FUNCTION TO FIND THE NUMBER OF VOWELS FOR COMPARISON LATER :)
+def chk(b):
+    cnt=0
+    for el in b:
+        if el in vow:
+            cnt=cnt+1
+    return cnt 
+    
+fr=[]
+k=int(input("Enter the size"))
+for a in range(len(s)):
+    if s[a] in vow:
+        fr.append(s[a:a+k])
+max=fr[0]
+for x in range(len(fr)):
+    cou=0
+    if chk(max)>=chk(fr[x]):
+        continue
+    else:
+        max=fr[x]
+print(max)
